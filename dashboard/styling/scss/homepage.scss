@@ -1,0 +1,56 @@
+//sass --watch dashboard/styling/scss/homepage.scss:dashboard/styling/css/homepage.css
+body{
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    .header{
+        height: 15%;
+        width: 100%;
+        background-color: red;
+        display: flex;
+        flex-wrap: wrap;
+        .currentTime{
+            height: 100%;
+            width: 25%;
+            background-color: darkred;
+        }
+        .agendaToday{
+            height: 100%;
+            width: 75%;
+            background-color: crimson;
+        }
+    }
+    .center{
+        background-color: burlywood;
+        height: 70%;
+        width: 100%;
+        display: flex;
+
+        .quoteContainer{
+            height: 35%;
+            width: 85%;
+            background-color: beige;
+            margin: auto;
+
+        }
+    }
+    .footer{
+        background-color: palegoldenrod;
+        height: 15%;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+
+        .currentWeather{
+            height: 100%;
+            width: 25%;
+            background-color: peachpuff;
+        }
+        .weatherForecast{
+            height: 100%;
+            width: 75%;
+            background-color: lightyellow;
+        }
+    }
+
+}
