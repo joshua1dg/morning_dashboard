@@ -1,0 +1,18 @@
+.footer{
+    background-color: palegoldenrod;
+    height: 15%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+
+    .currentWeather{
+        height: 100%;
+        width: 25%;
+        background-color: peachpuff;
+    }
+    .weatherForecast{
+        height: 100%;
+        width: 75%;
+        background-color: lightyellow;
+    }
+}

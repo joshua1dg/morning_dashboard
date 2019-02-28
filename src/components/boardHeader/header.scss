@@ -1,0 +1,17 @@
+.header{
+    height: 15%;
+    width: 100%;
+    background-color: red;
+    display: flex;
+    flex-wrap: wrap;
+    .currentTime{
+        height: 100%;
+        width: 25%;
+        background-color: darkred;
+    }
+    .agendaToday{
+        height: 100%;
+        width: 75%;
+        background-color: crimson;
+    }
+}
