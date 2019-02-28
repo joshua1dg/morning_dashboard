@@ -1,10 +1,10 @@
 import React from 'react';
 import './home.scss'
 
-export default () => {
+export default (props) => {
     return (
         <div className="center">
-            <div className="quoteContainer"></div>
+            <div className="quoteContainer">{props.feed}</div>
         </div>
     );
 }

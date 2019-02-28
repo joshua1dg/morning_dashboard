@@ -5,7 +5,7 @@ $xml = simplexml_load_file($urlToParse) or die("No Feed!");
 $entries = [];
 // print_r($xml);
 
-for($entryIndex = 0; $entryIndex < 10; $entryIndex++){
+for($entryIndex = 0; $entryIndex < 1; $entryIndex++){
     $currentItem = $xml->entry[$entryIndex];
     $title = $currentItem->title;
     $content = $currentItem->content;
