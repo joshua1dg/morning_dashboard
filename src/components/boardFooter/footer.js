@@ -1,13 +1,12 @@
 import React from 'react';
 import './footer.scss';
+import Weather from './weather'
 
-export default () => {
+export default (props) => {
+
     return (
         <div className="footer">
-            <div className="currentWeather">
-
-            </div>
-            <div className="weatherForecast"></div>
+            <Weather todayWeatherObj={props.weatherObj[0]} weatherForecast={props.weatherObj[1]}/>
         </div>
     )
 }

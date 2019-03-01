@@ -4,10 +4,14 @@
     background-color: red;
     display: flex;
     flex-wrap: wrap;
-    .currentTime{
+    .currentTimeContainer{
+        display: flex;
         height: 100%;
         width: 25%;
         background-color: darkred;
+        span{
+            margin: auto;
+        }
     }
     .agendaToday{
         height: 100%;

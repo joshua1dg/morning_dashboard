@@ -2,7 +2,7 @@ import React, {Component, Fragment} from 'react';
 import '../assets/css/app.css';
 import logo from '../assets/images/logo.svg';
 
-import Axios from 'axios';
+import axios from 'axios';
 import Test from './test';
 
 
@@ -14,31 +14,54 @@ import Home from './boardCenter/home';
 class App extends Component{
 
     state = {
-        'feed': []
+        'serverResponse': []
     }
 
-    async componentDidMount(){
-        const resp = await Axios.get('/api/test.php');
-        this.state={
-            'feed': resp.data
-        }
+    getLongLat(){
+        navigator.geolocation.getCurrentPosition(
+            function (position) {
+                console.log(position.coords.latitude);
+                console.log(position.coords.longitude);
 
-        console.log('Test Resp:', this.state);
+            });
+    }
+
+    async getData(){
+        const resp = await axios.get('/api/test.php');
+        console.log('imediate response: ', resp);
+        this.setState({
+            'serverResponse' : resp.data.data
+        });
+    }
+
+    componentDidMount(){
+        this.getLongLat();
+        this.getData();
     }
 
     render () {
+        const { agenda, quote, user_id, weather } = this.state.serverResponse;
+
+        if(this.state.serverResponse.length === 0){
+            return (
+                <div className='dashBoard'>
+                    <p className="">Please Wait...</p>
+                </div>
+            )
+        } else{
+            return (
+                <div className='dashBoard'>
+                    <Fragment>
+                        <Header />
+                        <Home feed={this.state.feed} />
+                        <Footer weatherObj={weather} />
+                    </Fragment>
+                    {/* <Test/> */}
+                </div>
+            )
+        }
 
 
-        return(
-            <div className='dashBoard'>
-                <Fragment>
-                    <Header />
-                    <Home feed={this.state.feed}/>
-                    <Footer />
-                </Fragment>
-                {/* <Test/> */}
-            </div>
-        )
 
     }
 }

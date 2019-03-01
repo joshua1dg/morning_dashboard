@@ -18,5 +18,5 @@ $youtubeSubcriberCount = getSubscriptionCount($youtubeUsername, $youtubeApiKey);
 
 //RSS Info
 $redditParse = parseUrl('https://www.reddit.com/r/Entrepreneur/.rss');
-print_r($redditParse);
+// print_r($redditParse);
 ?>

@@ -2,17 +2,35 @@
     background-color: palegoldenrod;
     height: 15%;
     width: 100%;
-    display: flex;
-    flex-wrap: wrap;
 
-    .currentWeather{
+    .weatherContainer{
+        height: 100%;
+        width: 100%;
+        display: flex;
+        
+        .currentWeather{
         height: 100%;
         width: 25%;
         background-color: peachpuff;
+        display: flex;
+
+            .currentWeatherInfo{
+                text-align: center;
+                margin: auto;
+            }
+        }
+        .weatherForecast{
+            display: flex;
+            align-items: center;
+            height: 100%;
+            width: 75%;
+            background-color: lightyellow;
+            
+            .singleWeatherContainer{
+                width: 20%;
+                text-align: center;
+            }
+        }
     }
-    .weatherForecast{
-        height: 100%;
-        width: 75%;
-        background-color: lightyellow;
-    }
+
 }
