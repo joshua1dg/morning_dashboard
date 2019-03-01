@@ -1,0 +1,35 @@
+stdClass Object
+(
+    [success] => stdClass Object
+        (
+            [total] => 1
+        )
+
+    [contents] => stdClass Object
+        (
+            [quotes] => Array
+                (
+                    [0] => stdClass Object
+                        (
+                            [quote] => If you have dreams it is your responsibility to make them happen.
+                            [author] => Bel Pesce
+                            [length] => 65
+                            [tags] => Array
+                                (
+                                    [0] => dream
+                                    [1] => inspire
+                                    [2] => success
+                                )
+
+                            [category] => inspire
+                            [title] => Inspiring Quote of the day
+                            [date] => 2019-03-01
+                            [id] => 
+                        )
+
+                )
+
+            [copyright] => 2017-19 theysaidso.com
+        )
+
+)

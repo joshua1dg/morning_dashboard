@@ -21,7 +21,10 @@ const home = {
 
     user_id: 432,
 
-    'quote': 'this is the quote for the first page',
+    'quote': {
+        text: 'The size of a crowd is not proportional to the value of the decision it\'s making',
+        citation: 'Eddie Pinero'
+    },
 
     //array storing two array of objects, each value of object is an array
     'weather': [

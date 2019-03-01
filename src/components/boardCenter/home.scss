@@ -5,10 +5,17 @@
     display: flex;
 
     .quoteContainer{
+        display: flex;
+        padding: 3%;
         height: 35%;
         width: 85%;
         background-color: beige;
         margin: auto;
+        text-align: center;
+
+        .quote{
+            margin: auto;
+        }
 
     }
 }

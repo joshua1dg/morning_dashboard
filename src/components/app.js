@@ -40,7 +40,10 @@ class App extends Component{
     }
 
     render () {
+        console.log('this is state o.O : ', this.state)
         const { agenda, quote, user_id, weather } = this.state.serverResponse;
+
+        console.log('thisis quote in home: ', quote);
 
         if(this.state.serverResponse.length === 0){
             return (
@@ -53,7 +56,7 @@ class App extends Component{
                 <div className='dashBoard'>
                     <Fragment>
                         <Header agendaObj={agenda}/>
-                        <Home feed={this.state.feed} />
+                        <Home feed={quote} />
                         <Footer weatherObj={weather} />
                     </Fragment>
                     {/* <Test/> */}
