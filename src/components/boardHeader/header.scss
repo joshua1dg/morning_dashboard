@@ -4,6 +4,7 @@
     background-color: red;
     display: flex;
     flex-wrap: wrap;
+    padding: .5%;
     .currentTimeContainer{
         display: flex;
         height: 100%;
@@ -13,9 +14,22 @@
             margin: auto;
         }
     }
-    .agendaToday{
-        height: 100%;
+
+    .agendaContainer{
         width: 75%;
+        height: 100%;
+        
+        .agendaToday{
+        height: 100%;
+        width: 100%;
         background-color: crimson;
+        display: flex;
+
+            .eventContainer{
+                width: 15%;
+                margin: 0 1%;
+            }
+        }
     }
+
 }

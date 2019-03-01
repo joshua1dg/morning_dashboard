@@ -52,7 +52,7 @@ class App extends Component{
             return (
                 <div className='dashBoard'>
                     <Fragment>
-                        <Header />
+                        <Header agendaObj={agenda}/>
                         <Home feed={this.state.feed} />
                         <Footer weatherObj={weather} />
                     </Fragment>
