@@ -1,23 +1,28 @@
 .header{
     height: 15%;
     width: 100%;
-    background-color: red;
+    background-color: green;
     display: flex;
     flex-wrap: wrap;
-    padding: .5%;
+    
     .currentTimeContainer{
         display: flex;
+        box-sizing: border-box;
         height: 100%;
         width: 25%;
         background-color: darkred;
+        padding: 1%;
+
         span{
             margin: auto;
         }
     }
 
     .agendaContainer{
+        box-sizing: border-box;
         width: 75%;
         height: 100%;
+        padding: 1%;
         
         .agendaToday{
         height: 100%;
@@ -25,12 +30,18 @@
         background-color: crimson;
         display: flex;
         flex-wrap: wrap;
+        justify-content: center;
 
             .eventContainer{
-                width: 15.5%;
-                height: 50%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                width: 17.5%;
+                height: 100%;
                 margin: 0 1%;
                 border-top: solid black 1px;
+                text-align: center;
+
             }
         }
     }

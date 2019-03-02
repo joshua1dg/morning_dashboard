@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 
 class Weather extends Component{
-    parseFullWeather(weatherObj) {
-        const {todayWeatherObj, weatherForecastObj} = this.props;
+    parseFullWeather(todayWeatherObj, weatherForecastObj) {
         const currentWeather = todayWeatherObj[0];
         const todayForecast = todayWeatherObj.slice(1);
 
@@ -49,8 +48,8 @@ class Weather extends Component{
     }
 
     render(){
-        const {weatherObj} = this.props;
-        const weatherElements = this.parseFullWeather(weatherObj);
+        const { todayWeatherObj, weatherForecastObj } = this.props;
+        const weatherElements = this.parseFullWeather(todayWeatherObj, weatherForecastObj);
 
         return (
             <div className="weatherContainer">

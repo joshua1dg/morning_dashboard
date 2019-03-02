@@ -45,13 +45,18 @@ $weatherForecast = getHourlyForecast($weatherApiKey, $locationKey);
 
 function weatherForecastPreperation($weatherForecast){
     $resultArray = [];
-    for($itemIndex = 0; $itemIndex < count($weatherForecast); $itemIndex++){
+    for($itemIndex = 0; $itemIndex < count($weatherForecast); $itemIndex+=2){ //gets forecast for every 2 hours starting at current hour
         $indivPrediction = $weatherForecast[$itemIndex];
 
         $hour = $indivPrediction['hour'];
         $temperature = "{$indivPrediction['temperature']}°{$indivPrediction['unit']}";
         $description = $indivPrediction['description'];
         $img = $indivPrediction['iconImg'];
+
+
+        if($itemIndex === 0){
+            $hour = 'Feels Like';
+        }
 
         $resultArray[] = [$hour => [$temperature, $description, $img]];
     }
@@ -64,10 +69,14 @@ $responseToClient =
     'quote' => $quoteObj,
     'weather'=> [
         weatherForecastPreperation($weatherForecast),
-        weatherForecastPreperation($weatherForecast)
+        [["Today"=>[83,90,"image.png"]],["Tuesday"=>[76,88,"image.png"]],["Wednesday"=>[78,83,"image.png"]],    ///dummy data placeholder
+                            ["Thursday"=>[82,89,"image.png"]],["Friday"=>[79,85,"image.png"]]]
     ],
     'agenda'=> [
-        calendarEventPreperation($calendarInfo)
+        calendarEventPreperation($calendarInfo),
+        ["Tuesday"=>[["4:45AM"=>"Thing 1"],["5:15AM"=>"Thing 2"],["7:00AM"=>"Thing 3"]]],
+                            ["Wednesday"=>[["4:45AM"=>"Thing 1"],["5:15AM"=>"Thing 2"],["7:00AM"=>"Thing 3"]]],
+                            ["Thursday"=>[["4:45AM"=>"Thing 1"],["5:15AM"=>"Thing 2"],["7=:00AM"=>"Thing 3"]]]
     ]
 
 ];

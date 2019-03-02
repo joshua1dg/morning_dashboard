@@ -18,7 +18,7 @@ function parseInformation($response){
 
     $resultEvents = [];
 
-    for($indivIndex = 0; $indivIndex < count($eventsArray); $indivIndex++){
+    for($indivIndex = 0; $indivIndex < count($eventsArray) && $indivIndex < 5; $indivIndex++){
         $indivEvent = $eventsArray[$indivIndex];
         $startUnconvenFormat = $indivEvent['DTSTART']['value'];
         $startDt = new DateTime ( $startUnconvenFormat );

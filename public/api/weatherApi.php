@@ -9,12 +9,15 @@ function getHourlyForecast(){
         $indivForecast = $response[$indivForecastIndex];
 
         $hour = $indivForecast->DateTime;
+        $hourObj = new DateTime ( $hour );
+        $hourStd = $hourObj->format ( 'h:i' );
+
         $temperature = $indivForecast->Temperature->Value;
         $tempUnit = $indivForecast->Temperature->Unit;
         $description = $indivForecast->IconPhrase;
         $iconImg = $indivForecast->WeatherIcon;
 
-        $hourForecastArray[] = ['unit'=>$tempUnit, 'temperature'=>$temperature, 'hour'=>$temperature, 'description'=>$description, 'iconImg'=>$iconImg];
+        $hourForecastArray[] = ['unit'=>$tempUnit, 'temperature'=>$temperature, 'hour'=>$hourStd, 'description'=>$description, 'iconImg'=>$iconImg];
 
     }
     return $hourForecastArray;

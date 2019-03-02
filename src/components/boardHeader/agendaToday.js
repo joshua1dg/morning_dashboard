@@ -23,6 +23,7 @@ class AgendaToday extends Component{
     }
 
     render(){
+        console.log('this is agenda props: ', this.props.agendaTodayObj)
         return(
             <div className='agendaToday'>
                 {this.parseTodayAgenda(this.props.agendaTodayObj)}
