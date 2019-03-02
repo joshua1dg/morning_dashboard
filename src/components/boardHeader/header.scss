@@ -24,10 +24,13 @@
         width: 100%;
         background-color: crimson;
         display: flex;
+        flex-wrap: wrap;
 
             .eventContainer{
-                width: 15%;
+                width: 15.5%;
+                height: 50%;
                 margin: 0 1%;
+                border-top: solid black 1px;
             }
         }
     }

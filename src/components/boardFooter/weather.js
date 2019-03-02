@@ -10,14 +10,11 @@ class Weather extends Component{
         const todayForecastElements = this.parseTodayForecast(todayForecast);
 
 
-        console.log('this is todayforecase elements: ', todayForecastElements);
         const forecastElements = { currentWeather: currentWeatherElement, todayForecast: todayForecastElements};
-        console.log(forecastElements);
         return forecastElements;
     }
 
     parseCurrentWeather(currentWeatherObj){
-        console.log('this is current weather in function: ', currentWeatherObj);
         const currentTemp = currentWeatherObj['Feels Like'][0];
         const icon = currentWeatherObj['Feels Like'][1];
         return(

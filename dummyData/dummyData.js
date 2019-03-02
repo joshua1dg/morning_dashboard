@@ -32,7 +32,10 @@ const home = {
             { 'Feels Like': [85, 'image.png'] },
             { '6AM': [87, 90, 'image.png'] },
             { '9AM': [85, 88, 'image.png'] },
-            { '12PM': [83, 86, 'image.png'] }
+            { '12PM': [83, 86, 'image.png'] },
+            { '3PM': [85, 88, 'image.png'] },
+            { '6PM': [84, 87, 'image.png'] }
+
         ],
         [
             { 'Today': [83, 90, 'image.png'] },

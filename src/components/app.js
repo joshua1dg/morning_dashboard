@@ -27,8 +27,8 @@ class App extends Component{
     }
 
     async getData(){
-        const resp = await axios.get('/api/test.php');
-        console.log('imediate response: ', resp);
+        const resp = await axios.get('/api/response.php');
+        console.log('imediate server response: ', resp);
         this.setState({
             'serverResponse' : resp.data.data
         });
@@ -40,10 +40,7 @@ class App extends Component{
     }
 
     render () {
-        console.log('this is state o.O : ', this.state)
         const { agenda, quote, user_id, weather } = this.state.serverResponse;
-
-        console.log('thisis quote in home: ', quote);
 
         if(this.state.serverResponse.length === 0){
             return (

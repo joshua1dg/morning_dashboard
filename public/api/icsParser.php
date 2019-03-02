@@ -2,14 +2,36 @@
 require ( '../icsParser/iCalEasyReader.php' );
 header( 'Content-Type: text/plain; charset=UTF-8' );
 
-function parseEvents($icsFileUrl){
+function getEvents($icsFileUrl){
     $ical = new iCalEasyReader();
-    $lines = $ical->load( file_get_contents($icsFileUrl) );
+    $response = $ical->load( file_get_contents($icsFileUrl) );
     // echo '______________________________INITIAL RETRIEVAL_____________________________________';
-    // print_r($lines);
-    trackRecurrence($lines);
-    // return $lines;
+    parseInformation($response);
+    // trackRecurrence($response);
+    // return $response;
 }
+
+
+function parseInformation($response){
+    $eventsArray = $response['VEVENT'];
+
+    $resultEvents = [];
+
+    for($indivIndex = 0; $indivIndex < count($eventsArray); $indivIndex++){
+        $indivEvent = $eventsArray[$indivIndex];
+        $startUnconvenFormat = $indivEvent['DTSTART']['value'];
+        $startDt = new DateTime ( $startUnconvenFormat );
+        //$startTime = $startDt->format ( 'm/d/Y h:i' );
+        $startTime = $startDt->format ( 'h:iA' );
+        $title = $indivEvent['SUMMARY'];
+
+        $resultEvents[] = ['startTime'=>$startTime, 'title'=>$title];
+
+    }
+    return $resultEvents;
+}
+
+
 
 function trackRecurrence($parsedIcsArray){
     $weekAbbreviations = ['SU', 'MO', 'TU', 'WE', 'TH', 'FR', 'SA'];
@@ -33,6 +55,5 @@ function trackRecurrence($parsedIcsArray){
     // echo $date;
     // echo $dateNumeric;
 }
-
 
 ?>
