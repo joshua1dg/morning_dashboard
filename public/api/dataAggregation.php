@@ -14,8 +14,22 @@ $youtubeSubcriberCount = getSubscriptionCount($youtubeUsername, $youtubeApiKey);
 // echo($youtubeSubcriberCount);
 
 //Calendar Info
-// $calendarInfo = getEvents($icalUrl);
+$calendarInfo = getEvents($icalUrl);
 // print_r($calendarInfo);
+
+function calendarEventPreperation($calendarInfo){
+    $resultArray= ['today' => []];
+    for($itemIndex = 0; $itemIndex < count($calendarInfo); $itemIndex++){
+        $indivEvent = $calendarInfo[$itemIndex];
+
+        $startTime = $indivEvent['startTime'];
+        $title = $indivEvent['title'];
+
+        $resultArray['today'][] = [$startTime => $title];
+    }
+
+    return $resultArray;
+}
 
 //RSS Info
 $redditParse = parseUrl($rssFeedUrl);
@@ -27,5 +41,36 @@ $quoteObj = getQuote();
 
 //Weather API
 $weatherForecast = getHourlyForecast($weatherApiKey, $locationKey);
+// print_r($weatherForecast);
 
+function weatherForecastPreperation($weatherForecast){
+    $resultArray = [];
+    for($itemIndex = 0; $itemIndex < count($weatherForecast); $itemIndex++){
+        $indivPrediction = $weatherForecast[$itemIndex];
+
+        $hour = $indivPrediction['hour'];
+        $temperature = "{$indivPrediction['temperature']}°{$indivPrediction['unit']}";
+        $description = $indivPrediction['description'];
+        $img = $indivPrediction['iconImg'];
+
+        $resultArray[] = [$hour => [$temperature, $description, $img]];
+    }
+
+    return $resultArray;
+}
+
+$responseToClient = 
+[
+    'quote' => $quoteObj,
+    'weather'=> [
+        weatherForecastPreperation($weatherForecast),
+        weatherForecastPreperation($weatherForecast)
+    ],
+    'agenda'=> [
+        calendarEventPreperation($calendarInfo)
+    ]
+
+];
+
+// print_r($responseToClient);
 ?>

@@ -6,9 +6,10 @@ function getEvents($icsFileUrl){
     $ical = new iCalEasyReader();
     $response = $ical->load( file_get_contents($icsFileUrl) );
     // echo '______________________________INITIAL RETRIEVAL_____________________________________';
-    parseInformation($response);
+    $eventArray = parseInformation($response);
     // trackRecurrence($response);
     // return $response;
+    return $eventArray;
 }
 
 

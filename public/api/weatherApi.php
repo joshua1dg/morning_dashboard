@@ -3,20 +3,22 @@
 function getHourlyForecast(){
     $response = json_decode(file_get_contents('./hourlyForecastDummy'));
 
+    $hourForecastArray = [];
+
     for ($indivForecastIndex = 0; $indivForecastIndex < count($response); $indivForecastIndex++){
         $indivForecast = $response[$indivForecastIndex];
 
         $hour = $indivForecast->DateTime;
         $temperature = $indivForecast->Temperature->Value;
         $tempUnit = $indivForecast->Temperature->Unit;
-        $iconPhrase = $indivForecast->IconPhrase;
+        $description = $indivForecast->IconPhrase;
         $iconImg = $indivForecast->WeatherIcon;
 
-        // echo $tempUnit;
-        // echo $temperature;
-        // echo $hour;
+        $hourForecastArray[] = ['unit'=>$tempUnit, 'temperature'=>$temperature, 'hour'=>$temperature, 'description'=>$description, 'iconImg'=>$iconImg];
+
     }
-    // print_r($response);
+    return $hourForecastArray;
+    // print_r($hourForecastArray);
 }
 
 function getWeeklyForecast($apiKey, $locationKey){

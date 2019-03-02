@@ -8,7 +8,7 @@ function getQuote(){
     $quote = $quoteInfo[0]->quote;
     $author = $quoteInfo[0]->author;
 
-    return ['quote' => $quote, 'author' => $author];
+    return ['text' => $quote, 'citation' => $author];
 }
 
 
