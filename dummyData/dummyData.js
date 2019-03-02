@@ -29,12 +29,12 @@ const home = {
     //array storing two array of objects, each value of object is an array
     'weather': [
         [
-            { 'Feels Like': [85, 'image.png'] },
-            { '6AM': [87, 90, 'image.png'] },
-            { '9AM': [85, 88, 'image.png'] },
-            { '12PM': [83, 86, 'image.png'] },
-            { '3PM': [85, 88, 'image.png'] },
-            { '6PM': [84, 87, 'image.png'] }
+            { 'Feels Like': [85, 'Cloudy', 'image.png'] },
+            { '6AM': [87, 'Sunny', 'image.png'] },
+            { '9AM': [85, 'Showers', 'image.png'] },
+            { '12PM': [83, 'Sunny', 'image.png'] },
+            { '3PM': [85, 'Cloudy', 'image.png'] },
+            { '6PM': [84, 'Showers', 'image.png'] }
 
         ],
         [

@@ -52,6 +52,7 @@ function weatherForecastPreperation($weatherForecast){
         $temperature = "{$indivPrediction['temperature']}°{$indivPrediction['unit']}";
         $description = $indivPrediction['description'];
         $img = $indivPrediction['iconImg'];
+        // $img = file_get_contents("../weatherIcons/icon{$indivPrediction['iconImg']}.png");
 
 
         if($itemIndex === 0){

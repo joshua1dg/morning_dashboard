@@ -15,11 +15,14 @@ class Weather extends Component{
 
     parseCurrentWeather(currentWeatherObj){
         const currentTemp = currentWeatherObj['Feels Like'][0];
-        const icon = currentWeatherObj['Feels Like'][1];
+        const description = currentWeatherObj['Feels Like'][1];
+        const icon = currentWeatherObj['Feels Like'][2];
+
         return(
             <div className="currentWeatherInfo">
                 <div>Feels Like</div>
                 <div>{currentTemp}</div>
+                <div>{description}</div>
                 <div>{icon}</div>
             </div>
         )
@@ -30,14 +33,14 @@ class Weather extends Component{
             (item) => {
                 const hour = Object.keys(item);
                 const lowestTemp = Object.values(item)[0][0];
-                const highestTemp = Object.values(item)[0][1];
+                const description = Object.values(item)[0][1];
                 const icon = Object.values(item)[0][2];
 
                 return (
                     <div className="singleWeatherContainer" key={Object.keys(item)}>
                         <div>{hour}</div>
                         <div>{lowestTemp}</div>
-                        <div>{highestTemp}</div>
+                        <div>{description}</div>
                         <div>{icon}</div>
                     </div>
                 )
