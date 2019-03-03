@@ -18,4 +18,20 @@
         }
 
     }
+
+    .socialInfoContainer{
+        position: relative;
+        height: 80%;
+        width: 80%;
+        margin: auto;
+        background-color: green;
+        .socialImage{
+            height: 50%;
+        }
+
+        .totalSubscribersContainer{
+            position: absolute;
+            top: 50%;
+        }
+    }
 }
