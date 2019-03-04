@@ -132,18 +132,40 @@ const socialInfo = {
 //object of objects
 const newsInfo = {
     'Reddit': {
-        'TitleOfItem': 'content from post',
-        'TitleOfItem': 'content from post'
+        'SubRedditName':[
+            {
+                'postTitle': 'this is the title of the post',
+                'postContent': 'content from post' 
+            },
+            {
+                'postTitle': 'this is the title of the post',
+                'postContent': 'content from post'
+            }
+        ],
+        'SubRedditName 2': [
+            {
+                'postTitle 2': 'this is the title of the post 2',
+                'postContent 2': 'content from post'
+            },
+            {
+                'postTitle2': 'this is the title of the post 2',
+                'postContent2': 'content from post 2'
+            }
+        ]
     },
 
     'Feed2Name': {
-        'TitleOfItem': 'content from post',
-        'TitleOfItem': 'content from post'
+        'SubName':{
+            'TitleOfItem': 'content from post',
+            'TitleOfItem': 'content from post'
+        }
     },
 
     'Feed3Name': {
-        'TitleOfItem': 'content from post',
-        'TitleOfItem': 'content from post'
+        'SubName':{
+            'TitleOfItem': 'content from post',
+            'TitleOfItem': 'content from post'
+        }
     }
 }
 

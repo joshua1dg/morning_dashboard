@@ -1,7 +1,7 @@
 <?php
 require_once('dataAggregation.php');
 
-$dummyInfoToSend = ["user_id"=>432,
+$dummyHomeInfoToSend = ["user_id"=>432,
                 "quote"=>["text"=>"The size of a crowd is not proportional to the value of the decision it's making", "citation"=>"Eddie Pinero"], 
                 "weather"=>[[["Feels Like"=>[85,"image.png"]],["6AM"=>[87,90,"image.png"]],["9AM"=>[85,88,"image.png"]],
                             ["12PM"=>[83,86,"image.png"]], ["3PM"=>[85,88,"image.png"]], ["6PM"=>[84,87,"image.png"]]],

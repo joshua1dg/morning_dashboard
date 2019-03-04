@@ -1,17 +1,28 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './home.scss'
 import './quote';
 import Quote from './quote';
 import Social from './socialMedia';
 import RssFeed from './rssFeed';
 
-export default (props) => {
-    // debugger;
-    return (
-        <div className="center">
-                <Social/>
-                {/* <Quote feed={props.feed}/> */}
-                {/* <RssFeed/> */}
-        </div>
-    );
+class Home extends Component{
+    componentToShow (itemToCompare){
+        switch (itemToCompare) {
+            case 'news': return <RssFeed />;
+            case 'social': return <Social />;
+            case 'quote': return <Quote feed={this.props.feed}/>
+        }
+    }
+
+    // debugger;\
+    render(){
+        return (
+            <div className="center" >
+                {this.componentToShow(this.props.section)}
+            </div>
+        );
+    }   
 }
+
+export default Home;
+

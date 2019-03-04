@@ -11,6 +11,8 @@ import Header from './boardHeader/header'
 import Footer from './boardFooter/footer';
 import Home from './boardCenter/home';
 
+import {Route, Switch} from 'react-router-dom';
+
 class App extends Component{
 
     state = {
@@ -26,7 +28,7 @@ class App extends Component{
             });
     }
 
-    async getData(){
+    async getHomeData(){
         const resp = await axios.get('/api/response.php');
         console.log('imediate server response: ', resp);
         this.setState({
@@ -34,9 +36,13 @@ class App extends Component{
         });
     }
 
+    async getRssData(){
+        const resp = await axios.get('/api/rssResponse.php');
+    }
+
     componentDidMount(){
         this.getLongLat();
-        this.getData();
+        this.getHomeData();
     }
 
     render () {
@@ -53,7 +59,11 @@ class App extends Component{
                 <div className='dashBoard'>
                     <Fragment>
                         <Header agendaObj={agenda}/>
-                        <Home feed={quote} />
+                        <Switch>
+                            <Route path='/home' render={() => <Home section={'quote'} feed={quote}/>}/>
+                            <Route path='/social' render={() => <Home section={'social'} />} />
+                            <Route path='/news' render={() => <Home section={'news'} />} />
+                        </Switch>
                         <Footer weatherObj={weather} />
                     </Fragment>
                     {/* <Test/> */}
