@@ -5,7 +5,7 @@ $xml = simplexml_load_file($urlToParse) or die("No Feed!");
 $entries = [];
 // print_r($xml);
 
-for($entryIndex = 0; $entryIndex < 1; $entryIndex++){
+for($entryIndex = 1; $entryIndex < 3; $entryIndex++){
     $currentItem = $xml->entry[$entryIndex];
     $title = $currentItem->title;
     $content = $currentItem->content;
@@ -15,6 +15,7 @@ for($entryIndex = 0; $entryIndex < 1; $entryIndex++){
 
 }
 
+print_r(json_encode(parseUrl('https://www.reddit.com/r/Entrepreneur/.rss')));
 
 // <!-- $url = 'https://www.reddit.com/r/Entrepreneur/.rss'; -->
 // <!-- $xml = simplexml_load_file($url) or die("No Feed!"); -->
