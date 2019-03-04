@@ -1,5 +1,9 @@
 <?php
 
+// if(!isset(FROM_INSIDE)){
+//     die('cannot be run directly');
+// }
+
 function getHourlyForecast(){
     $response = json_decode(file_get_contents('./hourlyForecastDummy'));
 

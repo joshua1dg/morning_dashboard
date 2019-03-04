@@ -9,9 +9,9 @@ export default (props) => {
     // debugger;
     return (
         <div className="center">
-                {/* <Social/> */}
+                <Social/>
                 {/* <Quote feed={props.feed}/> */}
-                <RssFeed/>
+                {/* <RssFeed/> */}
         </div>
     );
 }

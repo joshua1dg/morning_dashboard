@@ -131,19 +131,19 @@ const socialInfo = {
 
 //object of objects
 const newsInfo = {
-    'Feed1Name': {
-        'Category1Name': 'feed from category 1 of feed 1 would be here',
-        'category2Name': 'feed from the second category of feed 1 goes here'
+    'Reddit': {
+        'TitleOfItem': 'content from post',
+        'TitleOfItem': 'content from post'
     },
 
     'Feed2Name': {
-        'Category1Name': 'feed from category 1 of feed two would be here',
-        'category2Name': 'feed from the second category of feed two goes here'
+        'TitleOfItem': 'content from post',
+        'TitleOfItem': 'content from post'
     },
 
     'Feed3Name': {
-        'Category1Name': 'feed from category 1 of feed 1 would be here',
-        'category2Name': 'feed from the second category of feed 1 goes here'
+        'TitleOfItem': 'content from post',
+        'TitleOfItem': 'content from post'
     }
 }
 

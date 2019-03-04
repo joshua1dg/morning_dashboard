@@ -1,5 +1,5 @@
 <?php
-
+define('FROM_INSIDE', true);
 require_once('icsParser.php');
 require_once('youtubeAPI.php');
 require_once('rssParser.php');
