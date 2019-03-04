@@ -14,6 +14,7 @@ $dummyHomeInfoToSend = ["user_id"=>432,
                             ["Wednesday"=>[["4:45AM"=>"Thing 1"],["5:15AM"=>"Thing 2"],["7:00AM"=>"Thing 3"]]],
                             ["Thursday"=>[["4:45AM"=>"Thing 1"],["5:15AM"=>"Thing 2"],["7=:00AM"=>"Thing 3"]]]]];
 
+
 // print_r($responseToClient); //from dataAggregation.php
 
 print(json_encode([
