@@ -6,6 +6,13 @@
     justify-content: center;
     align-items: center;
 
+    .leftPage, .rightPage{
+        background-color: blueviolet;
+        width: 5%;
+        height: 15%;
+        font-size: 40px;
+    }
+
     .quoteContainer{
         display: flex;
         padding: 3%;
@@ -23,7 +30,7 @@
     .feedContainer{
         height: 80%;
         width: 40%;
-        padding: 0 2% 2% 2%;
+        padding: 2%;
         background-color: lightgreen;
 
         .indivPostContainer{
@@ -38,13 +45,22 @@
         height: 80%;
         width: 80%;
         background-color: green;
+
         .socialImage{
-            height: 50%;
+            height: 100%;
         }
 
         .totalSubscribersContainer{
-            position: absolute;
-            top: 50%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .subscriberText{
+                position: absolute;
+                text-align: center;
+                font-size: 30px;
+            }
         }
     }
 }

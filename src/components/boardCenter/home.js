@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
 import './home.scss'
 import './quote';
+import { Link } from 'react-router-dom';
 import Quote from './quote';
 import Social from './socialMedia';
 import RssFeed from './rssFeed';
+
 
 class Home extends Component{
     componentToShow (itemToCompare){
@@ -18,7 +20,10 @@ class Home extends Component{
     render(){
         return (
             <div className="center" >
+                <Link to='/news' className="leftPage">{'<'}</Link>
                 {this.componentToShow(this.props.section)}
+                <Link to='/social' className="rightPage">{'>'}</Link>
+
             </div>
         );
     }   
