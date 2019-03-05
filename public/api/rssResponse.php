@@ -3,7 +3,7 @@ require_once('rssParser.php');
 
 print(json_encode([
     'success' => true,
-    'data' => 'Made the connection with RSS endpoint!'
+    'data' => parseUrl('https://www.reddit.com/r/Entrepreneur/.rss')
 ]));
 
 ?>

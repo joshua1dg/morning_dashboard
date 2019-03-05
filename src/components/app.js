@@ -54,7 +54,7 @@ class App extends Component{
     render () {
         const { agenda, quote, user_id, weather } = this.state.homeResponse;
 
-        if(this.state.homeResponse.length === 0){
+        if(this.state.homeResponse.length === 0 ||this.state.newsResponse.length === 0){
             return (
                 <div className='dashBoard'>
                     <p className="">Please Wait...</p>
@@ -67,8 +67,8 @@ class App extends Component{
                         <Header agendaObj={agenda}/>
                         <Switch>
                             <Route path='/home' render={() => <Home section={'quote'} feed={quote}/>}/>
-                            <Route path='/social' render={() => <Home section={'social'} feed={this.props.newsResponse}/>} />
-                            <Route path='/news' render={() => <Home section={'news'} />} />
+                            <Route path='/social' render={() => <Home section={'social'} />} />
+                            <Route path='/news' render={() => <Home section={'news'} feed={this.state.newsResponse}/>} />
                         </Switch>
                         <Footer weatherObj={weather} />
                     </Fragment>

@@ -23,7 +23,14 @@
     .feedContainer{
         height: 80%;
         width: 40%;
+        padding: 0 2% 2% 2%;
         background-color: lightgreen;
+
+        .indivPostContainer{
+            height: 50%;
+            width: 100%;
+            overflow: scroll;
+        }
     }
 
     .socialInfoContainer{
