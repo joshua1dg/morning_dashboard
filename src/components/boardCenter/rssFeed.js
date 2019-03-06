@@ -1,15 +1,25 @@
 import React, {Component} from 'react';
+import axios from 'axios';
 
 class RssFeed extends Component{
+
+    state = {
+        newsObj:[]
+    }
+
+
+    async getRssData() {
+        const resp = await axios.get('/api/rssParser.php');
+        const finalResp = this.parseRssFeed(resp.data.data['Reddit']);
+        return finalResp;
+    }
+
     parseRssFeed(feedToParse){
         const resultElements = [];
-        console.log('props in rssfeed component: ', this.props.feed);
         for (const [subfeedTitle, subfeedPosts] of Object.entries(feedToParse)){
-            console.log(subfeedTitle, 'splitter', subfeedPosts);
             for (let indivPost = 0; indivPost < subfeedPosts.length; indivPost++){
-                console.log('subfeed posts: ', subfeedPosts, 'indivPost: ', subfeedPosts[indivPost])
                 const indivPostElements = 
-                    <div className="indivPostContainer">
+                    <div className="indivPostContainer" key={indivPost}>
                         <h3 className="postTitle">{subfeedPosts[indivPost]['postTitle']}</h3>
                         <p className="postContent">{subfeedPosts[indivPost]['postContent']}</p>
                     </div>
@@ -20,11 +30,17 @@ class RssFeed extends Component{
         return resultElements;
     }
 
+    async componentDidMount(){
+        const resp = await this.getRssData();
+        this.setState({
+            newsObj: resp
+        })
+    }
+
     render(){
-        console.log('props in rss container: ', this.props.feed['Reddit'])
         return (
             <div className="feedContainer">
-                {this.parseRssFeed(this.props.feed['Reddit'])}
+                {this.state.newsObj}
             </div>
         );
     }

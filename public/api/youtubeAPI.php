@@ -1,4 +1,5 @@
 <?php
+require_once('credentials.php');
 
 function getSubscriptionCount($user_name, $api_key){
     $api_response = file_get_contents("https://www.googleapis.com/youtube/v3/channels?part=statistics&forUsername=$user_name&fields=items/statistics/subscriberCount&key=$api_key");
@@ -9,6 +10,13 @@ function getSubscriptionCount($user_name, $api_key){
     return $subscriptionCount;
 
 }
+
+$responseToClient = getSubscriptionCount($youtubeUsername, $youtubeApiKey);
+
+print(json_encode([
+    'success' => true,
+    'data' => $responseToClient 
+]));
 
 
 // $getRequest = 'https://www.googleapis.com/youtube/v3/channels';

@@ -10,7 +10,7 @@ class Header extends Component{
         return (
             <div className="header">
                 <Clock/>
-                <Agenda agendaObj={this.props.agendaObj}/>
+                <Agenda/>
             </div>
         );
     };

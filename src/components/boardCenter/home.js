@@ -10,9 +10,9 @@ import RssFeed from './rssFeed';
 class Home extends Component{
     componentToShow (itemToCompare){
         switch (itemToCompare) {
-            case 'news': return <RssFeed feed={this.props.feed}/>;
+            case 'news': return <RssFeed/>;
             case 'social': return <Social/>;
-            case 'quote': return <Quote feed={this.props.feed}/>
+            case 'quote': return <Quote/>
         }
     }
 

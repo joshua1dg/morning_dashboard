@@ -1,5 +1,6 @@
 <?php
-require ( '../icsParser/iCalEasyReader.php' );
+require_once ( '../icsParser/iCalEasyReader.php' );
+require_once('./credentials.php');
 header( 'Content-Type: text/plain; charset=UTF-8' );
 
 function getEvents($icsFileUrl){
@@ -57,4 +58,33 @@ function trackRecurrence($parsedIcsArray){
     // echo $dateNumeric;
 }
 
+//Calendar Info
+$calendarInfo = getEvents($icalUrl);
+// print_r($calendarInfo);
+
+function calendarEventPreperation($calendarInfo){
+    $resultArray= ['today' => []];
+    for($itemIndex = 0; $itemIndex < count($calendarInfo); $itemIndex++){
+        $indivEvent = $calendarInfo[$itemIndex];
+
+        $startTime = $indivEvent['startTime'];
+        $title = $indivEvent['title'];
+
+        $resultArray['today'][] = [$startTime => $title];
+    }
+
+    return $resultArray;
+}
+
+$responseToClient = [
+        calendarEventPreperation($calendarInfo),
+        ["Tuesday"=>[["4:45AM"=>"Thing 1"],["5:15AM"=>"Thing 2"],["7:00AM"=>"Thing 3"]]],
+                            ["Wednesday"=>[["4:45AM"=>"Thing 1"],["5:15AM"=>"Thing 2"],["7:00AM"=>"Thing 3"]]],
+                            ["Thursday"=>[["4:45AM"=>"Thing 1"],["5:15AM"=>"Thing 2"],["7=:00AM"=>"Thing 3"]]]
+];
+
+print(json_encode([
+    'success' => true,
+    'data' => $responseToClient //from dataAggregation.php
+]));
 ?>

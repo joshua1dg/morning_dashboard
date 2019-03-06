@@ -11,5 +11,5 @@ function getQuote(){
     return ['text' => $quote, 'citation' => $author];
 }
 
-
+print_r(json_encode(getQuote()));
 ?>

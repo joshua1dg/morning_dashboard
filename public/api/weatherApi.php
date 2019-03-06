@@ -1,4 +1,5 @@
 <?php
+require_once('./credentials.php');
 
 // if(!isset(FROM_INSIDE)){
 //     die('cannot be run directly');
@@ -48,5 +49,42 @@ function getWeeklyForecast($apiKey, $locationKey){
     }
     // print_r($response);
 }
+
+//Weather API
+$weatherForecast = getHourlyForecast($weatherApiKey, $locationKey);
+// print_r($weatherForecast);
+
+function weatherForecastPreperation($weatherForecast){
+    $resultArray = [];
+    for($itemIndex = 0; $itemIndex < count($weatherForecast); $itemIndex+=2){ //gets forecast for every 2 hours starting at current hour
+        $indivPrediction = $weatherForecast[$itemIndex];
+
+        $hour = $indivPrediction['hour'];
+        $temperature = "{$indivPrediction['temperature']}°{$indivPrediction['unit']}";
+        $description = $indivPrediction['description'];
+        $img = $indivPrediction['iconImg'];
+        // $img = file_get_contents("../weatherIcons/icon{$indivPrediction['iconImg']}.png");
+
+
+        if($itemIndex === 0){
+            $hour = 'Feels Like';
+        }
+
+        $resultArray[] = [$hour => [$temperature, $description, $img]];
+    }
+
+    return $resultArray;
+}
+
+$responseToClient = [
+        weatherForecastPreperation($weatherForecast),
+        [["Today"=>[83,90,"image.png"]],["Tuesday"=>[76,88,"image.png"]],["Wednesday"=>[78,83,"image.png"]],    ///dummy data placeholder
+                            ["Thursday"=>[82,89,"image.png"]],["Friday"=>[79,85,"image.png"]]]
+];
+
+print(json_encode([
+    'success' => true,
+    'data' => $responseToClient //from dataAggregation.php
+]));
 
 ?>

@@ -17,7 +17,7 @@ $dummyHomeInfoToSend = ["user_id"=>432,
 
 // print_r($responseToClient); //from dataAggregation.php
 
-print(json_encode([
-    'success' => true,
-    'data' => $responseToClient //from dataAggregation.php
-]));
+// print(json_encode([
+//     'success' => true,
+//     'data' => $responseToClient //from dataAggregation.php
+// ]));

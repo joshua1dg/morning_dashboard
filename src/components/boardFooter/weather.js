@@ -1,6 +1,20 @@
+import axios from 'axios';
 import React, {Component} from 'react';
 
 class Weather extends Component{
+
+    state = {
+        weatherObj: {
+            todayWeatherObj: [],
+            weatherForecastObj: []
+        }
+    }
+
+    async getWeather(){
+        const resp = await axios.get('/api/weatherApi.php');
+        return {todayWeatherObj:resp.data.data[0], weatherForecast:resp.data.data[1]};
+    }
+
     parseFullWeather(todayWeatherObj, weatherForecastObj) {
         const currentWeather = todayWeatherObj[0];
         const todayForecast = todayWeatherObj.slice(1);
@@ -50,21 +64,37 @@ class Weather extends Component{
         return todayForecastElements;
     }
 
+    async componentDidMount(){
+        const resp = await this.getWeather();
+        const {todayWeatherObj, weatherForecast} = resp;
+        this.setState({
+            weatherObj: {
+                todayWeatherObj: todayWeatherObj,
+                weatherForecastObj: weatherForecast
+            }
+        })
+    }
+
     render(){
-        const { todayWeatherObj, weatherForecastObj } = this.props;
-        const weatherElements = this.parseFullWeather(todayWeatherObj, weatherForecastObj);
+        const { todayWeatherObj, weatherForecastObj } = this.state.weatherObj;
 
-        return (
-            <div className="weatherContainer">
-                <div className="currentWeather">
-                    {weatherElements.currentWeather}
-                </div>
-                <div className="weatherForecast">
-                    {weatherElements.todayForecast}
-                </div>
-            </div>
+        if (todayWeatherObj.length !== 0){
+            const weatherElements = this.parseFullWeather(todayWeatherObj, weatherForecastObj);
 
-        );
+            return (
+                <div className="weatherContainer">
+                    <div className="currentWeather">
+                        {weatherElements.currentWeather}
+                    </div>
+                    <div className="weatherForecast">
+                        {weatherElements.todayForecast}
+                    </div>
+                </div>
+
+            );
+        }
+
+        return null;
     }
 }
 
