@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component} from 'react';
 import '../assets/css/app.css';
 import logo from '../assets/images/logo.svg';
 
@@ -27,13 +27,11 @@ class App extends Component{
 
     componentDidMount(){
         this.getLongLat();
-        // this.getHomeData();
     }
 
     render () {
             return (
                 <div className='dashBoard'>
-                    <Fragment>
                         <Header/>
                         <Switch>
                             <Route path='/home' render={() => <Home section={'quote'}/>}/>
@@ -41,8 +39,6 @@ class App extends Component{
                             <Route path='/news' render={() => <Home section={'news'}/>} />
                         </Switch>
                         <Footer/>
-                    </Fragment>
-                    {/* <Test/> */}
                 </div>
             )
         }
