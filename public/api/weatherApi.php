@@ -1,6 +1,7 @@
 <?php
 require_once('./credentials.php');
 
+
 // if(!isset(FROM_INSIDE)){
 //     die('cannot be run directly');
 // }
