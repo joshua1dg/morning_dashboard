@@ -10,10 +10,25 @@ class Weather extends Component{
         }
     }
 
-    async getWeather(){
-        const resp = await axios.get('/api/weatherApi.php');
-        return {todayWeatherObj:resp.data.data[0], weatherForecast:resp.data.data[1]};
+    async getWeather(position) {
+        const { latitude, longitude } = position.coords;
+        console.log('this is long and lati in get weather!: ', longitude, latitude)
+        const resp = await axios.post('/api/weatherApi.php', {
+            longitude: longitude,
+            latitude: latitude
+        });
+        const todayWeatherObj = resp.data.data[0];
+        const weatherForecast = resp.data.data[1];
+
+
+        this.setState({
+            weatherObj: {
+                todayWeatherObj: todayWeatherObj,
+                weatherForecastObj: weatherForecast
+            }
+        })
     }
+
 
     parseFullWeather(todayWeatherObj, weatherForecastObj) {
         const currentWeather = todayWeatherObj[0];
@@ -65,14 +80,8 @@ class Weather extends Component{
     }
 
     async componentDidMount(){
-        const resp = await this.getWeather();
-        const {todayWeatherObj, weatherForecast} = resp;
-        this.setState({
-            weatherObj: {
-                todayWeatherObj: todayWeatherObj,
-                weatherForecastObj: weatherForecast
-            }
-        })
+        navigator.geolocation.getCurrentPosition((position) => {this.getWeather(position)});
+
     }
 
     render(){

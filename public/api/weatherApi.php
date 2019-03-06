@@ -51,9 +51,6 @@ function getWeeklyForecast($apiKey, $locationKey){
     // print_r($response);
 }
 
-//Weather API
-$weatherForecast = getHourlyForecast($weatherApiKey, $locationKey);
-// print_r($weatherForecast);
 
 function weatherForecastPreperation($weatherForecast){
     $resultArray = [];
@@ -77,11 +74,32 @@ function weatherForecastPreperation($weatherForecast){
     return $resultArray;
 }
 
+function getLocationKey($weatherApiKey){
+    $postData = json_decode(file_get_contents('php://input'), true);
+    $longitude = $postData['longitude'];
+    $latitude = $postData['latitude'];
+
+    $resp = file_get_contents("http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=$weatherApiKey&q=$latitude%2C$longitude");
+    $locationKey = json_decode($resp, true)['Key'];
+    return $locationKey;
+}
+
+//____________________________________________________________
+
+$locationKey = getLocationKey($weatherApiKey);
+
+//Weather API
+$weatherForecast = getHourlyForecast($weatherApiKey, $locationKey);
+// print_r($weatherForecast);
+
+
 $responseToClient = [
         weatherForecastPreperation($weatherForecast),
         [["Today"=>[83,90,"image.png"]],["Tuesday"=>[76,88,"image.png"]],["Wednesday"=>[78,83,"image.png"]],    ///dummy data placeholder
                             ["Thursday"=>[82,89,"image.png"]],["Friday"=>[79,85,"image.png"]]]
 ];
+
+
 
 print(json_encode([
     'success' => true,

@@ -15,24 +15,6 @@ import {Route, Switch} from 'react-router-dom';
 
 class App extends Component{
 
-    getLongLat(){
-        navigator.geolocation.getCurrentPosition(
-            async function (position) {
-                console.log(position.coords.latitude);
-                console.log(position.coords.longitude);
-                const sentToServer = axios.post('/api/weatherApi.php', {
-                    longitude: position.coords.longitude,
-                    latititude: position.coords.latitude
-                });
-
-            });
-    }
-
-
-    componentDidMount(){
-        this.getLongLat();
-    }
-
     render () {
             return (
                 <div className='dashBoard'>
