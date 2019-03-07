@@ -1,22 +1,20 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {getRssData} from '../../actions/index'
 import axios from 'axios';
 
 class RssFeed extends Component{
 
-    state = {
-        newsObj:[]
-    }
-
-
-    async getRssData() {
-        const resp = await axios.get('/api/rssParser.php');
-        const finalResp = this.parseRssFeed(resp.data.data['Reddit']);
-        return finalResp;
-    }
+    // async getRssData() {
+    //     const resp = await axios.get('/api/rssParser.php');
+    //     const finalResp = this.parseRssFeed(resp.data.data['Reddit']);
+    //     return finalResp;
+    // }
 
     parseRssFeed(feedToParse){
         const resultElements = [];
         for (const [subfeedTitle, subfeedPosts] of Object.entries(feedToParse)){
+            console.log('this is subfeed posts: ', subfeedPosts)
             for (let indivPost = 0; indivPost < subfeedPosts.length; indivPost++){
                 const indivPostElements = 
                     <div className="indivPostContainer" key={indivPost}>
@@ -27,23 +25,27 @@ class RssFeed extends Component{
             }
         }
 
+        console.log('in parse feeed function, this is result elements: ', resultElements);
         return resultElements;
     }
 
     async componentDidMount(){
-        const resp = await this.getRssData();
-        this.setState({
-            newsObj: resp
-        })
+        this.props.getRssData()
     }
 
     render(){
         return (
             <div className="feedContainer">
-                {this.state.newsObj}
+                {this.parseRssFeed(this.props.newsObj)}
             </div>
         );
     }
 }
 
-export default RssFeed;
+export default connect(mapStateToProps, {getRssData})(RssFeed);
+
+function mapStateToProps(state){
+    return{
+        newsObj: state.apiCall.newsObj
+    }
+}

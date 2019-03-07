@@ -1,34 +1,16 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {getQuote} from '../../actions/index';
 import axios from 'axios';
 
 class Quote extends Component{
-
-    state = {
-        quoteObj: {
-            quote: '',
-            author: ''
-        }
+    componentDidMount(){
+        this.props.getQuote();
     }
-
-    async getQuote(){
-        const resp = await axios.get('/api/quoteApi.php');
-        return resp.data;
-    }
-
-    async componentDidMount(){
-        const { text, citation } = await this.getQuote();
-
-        this.setState({
-            quoteObj: {
-                quote: text,
-                author: citation
-            }
-        })
-    }
-
 
     render(){
-        const {quote, author} = this.state.quoteObj;
+        console.log('this.props in quote: ', this.props)
+        const {quote, author} = this.props.quoteObj;
         return (
             <div className="quoteContainer" >
                 <div className='quote'>{quote}<br />- {author}</div>
@@ -38,4 +20,10 @@ class Quote extends Component{
 
 }
 
-export default Quote;
+export default connect(mapStateToProps, {getQuote})(Quote);
+
+function mapStateToProps(state){
+    return{
+        quoteObj: state.apiCall.quoteObj 
+    }
+}

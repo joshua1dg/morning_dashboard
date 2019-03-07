@@ -1,28 +1,18 @@
 import React, {Component} from 'react';
 import AgendaToday from './agendaToday';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import {getAgendaObj} from '../../actions/index'
 
 class Agenda extends Component{
 
-    state = {
-        agendaObj: {}
-    }
-
-    async getAgendaObj(){
-        const resp = await axios.get('/api/icsParser.php');
-        return resp.data;
-    }
-
     async componentDidMount(){
-        const resp = await this.getAgendaObj();
-        this.setState({
-            agendaObj: resp.data
-        })
+        this.props.getAgendaObj();
     }
     
     render(){
-        const {agendaObj} = this.state;
-        if (Object.keys(this.state.agendaObj).length !==0){
+        const {agendaObj} = this.props;
+        if (Object.keys(agendaObj).length !==0){
             return (
                 <div className='agendaContainer'>
                     <AgendaToday agendaTodayObj={agendaObj[0]} />
@@ -35,4 +25,10 @@ class Agenda extends Component{
     }
 }
 
-export default Agenda;
+export default connect(mapStateToProps, {getAgendaObj})(Agenda);
+
+function mapStateToProps(state){
+    return{
+        agendaObj: state.apiCall.agendaObj
+    }
+}

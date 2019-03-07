@@ -13,14 +13,9 @@ class AgendaToday extends Component{
             )
         });
 
-        this.modifyWidthOfEvent(todayAgendaElements);
-
         return todayAgendaElements;
     }
 
-    modifyWidthOfEvent(array){
-        const length = array.length;
-    }
 
     render(){
         return(

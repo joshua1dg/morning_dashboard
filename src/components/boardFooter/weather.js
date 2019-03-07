@@ -5,33 +5,6 @@ import  { weatherCall } from '../../actions/index'
 
 class Weather extends Component{
 
-    state = {
-        weatherObj: {
-            todayWeatherObj: [],
-            weatherForecastObj: []
-        }
-    }
-
-    async getWeather(position) {
-        const { latitude, longitude } = position.coords;
-        console.log('this is long and lati in get weather!: ', longitude, latitude)
-        const resp = await axios.post('/api/weatherApi.php', {
-            longitude: longitude,
-            latitude: latitude
-        });
-        const todayWeatherObj = resp.data.data[0];
-        const weatherForecast = resp.data.data[1];
-
-
-        this.setState({
-            weatherObj: {
-                todayWeatherObj: todayWeatherObj,
-                weatherForecastObj: weatherForecast
-            }
-        })
-    }
-
-
     parseFullWeather(todayWeatherObj, weatherForecastObj) {
         const currentWeather = todayWeatherObj[0];
         const todayForecast = todayWeatherObj.slice(1);
@@ -82,14 +55,13 @@ class Weather extends Component{
     }
 
     async componentDidMount(){
-        await navigator.geolocation.getCurrentPosition((position) => this.props.weatherCall(position));
-        console.log('arlready passed locaiton function!')
+        navigator.geolocation.getCurrentPosition((position) => this.props.weatherCall(position));
     }
 
 
-
     render(){
-        const { todayWeatherObj, weatherForecastObj } = this.state.weatherObj;
+
+        const { todayWeatherObj, weatherForecastObj } = this.props;
 
         if (todayWeatherObj.length !== 0){
             const weatherElements = this.parseFullWeather(todayWeatherObj, weatherForecastObj);
@@ -112,12 +84,13 @@ class Weather extends Component{
 }
 
 function mapStateToProps(state) {
+
     return {
-        longitude: state.longitude,
-        latitude: state.latitude
+        longitude: state.apiCall.longitude,
+        latitude: state.apiCall.latitude,
+        todayWeatherObj: state.apiCall.todayWeatherObj,
+        weatherForecastObj: state.apiCall.weatherForecastObj
     }
 }
 
 export default connect(mapStateToProps, { weatherCall })(Weather);
-
-
