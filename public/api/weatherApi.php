@@ -103,7 +103,7 @@ $responseToClient = [
 
 print(json_encode([
     'success' => true,
-    'data' => $responseToClient //from dataAggregation.php
+    'data' => $responseToClient
 ]));
 
 ?>
