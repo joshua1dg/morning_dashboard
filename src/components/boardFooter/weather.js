@@ -1,5 +1,7 @@
 import axios from 'axios';
 import React, {Component} from 'react';
+import {connect} from 'react-redux'
+import  { weatherCall } from '../../actions/index'
 
 class Weather extends Component{
 
@@ -80,9 +82,11 @@ class Weather extends Component{
     }
 
     async componentDidMount(){
-        navigator.geolocation.getCurrentPosition((position) => {this.getWeather(position)});
-
+        await navigator.geolocation.getCurrentPosition((position) => this.props.weatherCall(position));
+        console.log('arlready passed locaiton function!')
     }
+
+
 
     render(){
         const { todayWeatherObj, weatherForecastObj } = this.state.weatherObj;
@@ -107,4 +111,13 @@ class Weather extends Component{
     }
 }
 
-export default Weather;
+function mapStateToProps(state) {
+    return {
+        longitude: state.longitude,
+        latitude: state.latitude
+    }
+}
+
+export default connect(mapStateToProps, { weatherCall })(Weather);
+
+

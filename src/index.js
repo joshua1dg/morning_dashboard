@@ -8,7 +8,7 @@ import thunk from 'redux-thunk';
 import rootReducer from './reducers/index.js'
 
 ReactDOM.render(
-    <Provider store={createStore(rootReducer)}>
+    <Provider store={createStore(rootReducer, applyMiddleware(thunk))}>
     <Router>
         <App />
     </Router>
