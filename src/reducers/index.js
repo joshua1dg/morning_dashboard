@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux';
-import locationReducer from './location_reducer';
+import apiCallReducer from './api_call_reducer';
 
 export default combineReducers({
-    location: locationReducer
+    apiCall: apiCallReducer
 })
