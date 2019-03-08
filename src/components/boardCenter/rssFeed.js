@@ -15,7 +15,7 @@ class RssFeed extends Component{
 
                 const indivPostElements = 
                     <div className="indivPostContainer" key={indivPost}>
-                        <h3 className="postTitle">{subfeedPosts[indivPost]['postTitle']}</h3>
+                        <h5 className="postTitle">{subfeedPosts[indivPost]['postTitle']}</h5>
                         <div className="postContent" dangerouslySetInnerHTML={{ __html: parsedContent}} />
                     </div>
                 resultElements.push(indivPostElements);

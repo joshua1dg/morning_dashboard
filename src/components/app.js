@@ -10,6 +10,7 @@ import './general/general.scss';
 import Header from './boardHeader/header'
 import Footer from './boardFooter/footer';
 import Center from './boardCenter/center';
+import CredentialForm from './general/credentialForm';
 
 import {Route, Switch} from 'react-router-dom';
 
@@ -24,6 +25,7 @@ class App extends Component{
                             <Route path='/social' render={() => <Center section={'social'} />} />
                             <Route path='/news' render={() => <Center section={'news'}/>} />
                         </Switch>
+                        <CredentialForm/>
                         {/* <Footer/> */}
                 </div>
             )
