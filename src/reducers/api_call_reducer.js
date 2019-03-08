@@ -7,7 +7,8 @@ const DEFAULT_STATE={
     weatherForecastObj: [],
     agendaObj: {},
     quoteObj: {},
-    newsObj: []
+    newsObj: [],
+    youtubeInfo: null
 }
 
 export default (state=DEFAULT_STATE, action) => {
@@ -19,6 +20,8 @@ export default (state=DEFAULT_STATE, action) => {
     case types.GET_QUOTE:
         return {...state, ...action.payload}
     case types.GET_RSS:
+        return {...state, ...action.payload}
+    case types.GET_YOUTUBE_INFO:
         return {...state, ...action.payload}
     default:
         return state;   

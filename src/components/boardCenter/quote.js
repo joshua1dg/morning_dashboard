@@ -9,7 +9,6 @@ class Quote extends Component{
     }
 
     render(){
-        console.log('this.props in quote: ', this.props)
         const {quote, author} = this.props.quoteObj;
         return (
             <div className="quoteContainer" >

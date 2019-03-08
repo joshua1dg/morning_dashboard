@@ -1,6 +1,20 @@
 import axios from 'axios';
 import types from './types';
 
+export function getYoutubeInfo(){
+    return async function (dispatch){
+        const resp = await axios.get('/api/youtubeAPI.php');
+        dispatch({
+            type: types.GET_YOUTUBE_INFO,
+            payload: {
+                youtubeInfo: resp.data.data
+            }
+
+        })
+
+    }
+}
+
 export function getRssData() {
     return async function (dispatch){
         const resp = await axios.get('/api/rssParser.php');
@@ -18,7 +32,6 @@ export function getRssData() {
 export function getQuote(){
     return async function (dispatch){
         const resp = await axios.get('/api/quoteApi.php');
-        console.log('this is quote rsp: ', resp)
         dispatch({
             type: types.GET_QUOTE,
             payload: {

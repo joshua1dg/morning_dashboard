@@ -24,7 +24,7 @@ class App extends Component{
                             <Route path='/social' render={() => <Center section={'social'} />} />
                             <Route path='/news' render={() => <Center section={'news'}/>} />
                         </Switch>
-                        <Footer/>
+                        {/* <Footer/> */}
                 </div>
             )
         }

@@ -54,7 +54,7 @@ class Weather extends Component{
         return todayForecastElements;
     }
 
-    async componentDidMount(){
+    componentDidMount(){
         navigator.geolocation.getCurrentPosition((position) => this.props.weatherCall(position));
     }
 

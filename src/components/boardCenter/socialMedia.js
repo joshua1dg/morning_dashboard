@@ -1,26 +1,18 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {getYoutubeInfo} from '../../actions/index';
 import axios from 'axios';
 
 class Social extends Component{
 
-    state ={
-        youtubeInfo: null
-    }
 
-    async getYoutubeInfo(){
-        const resp = await axios.get('/api/youtubeAPI.php');
-        return resp.data.data;  
-    }
+    componentDidMount(){
+        this.props.getYoutubeInfo();
 
-    async componentDidMount(){
-        const resp = await this.getYoutubeInfo();
-        this.setState({
-            youtubeInfo: resp
-        })
-    }
+    } 
 
     render(){
-        const {youtubeInfo} = this.state
+        const {youtubeInfo} = this.props
 
         return (
             <div className='socialInfoContainer'>
@@ -36,4 +28,10 @@ class Social extends Component{
     }
 } 
 
-export default Social;
+export default connect(mapStateToProps, {getYoutubeInfo})(Social);
+
+function mapStateToProps(state){
+    return {
+        youtubeInfo: state.apiCall.youtubeInfo
+    }
+}

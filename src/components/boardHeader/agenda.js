@@ -6,7 +6,7 @@ import {getAgendaObj} from '../../actions/index'
 
 class Agenda extends Component{
 
-    async componentDidMount(){
+    componentDidMount(){
         this.props.getAgendaObj();
     }
     
