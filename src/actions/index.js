@@ -1,6 +1,21 @@
 import axios from 'axios';
 import types from './types';
 
+export function sendUserCredentials(formValues) {
+    console.log('formvalues in sendcred action: ', formValues);
+    return async function (dispatch) {
+        const resp = await axios.post('/api/credentials.php', formValues);
+        console.log('this is cred resp: ', resp);
+        dispatch({
+            type: types.SEND_USER_INFO,
+            payload: {
+                formInfoStored: true
+            }
+        })
+        return resp.data;
+    }
+}
+
 export function getYoutubeInfo(){
     return async function (dispatch){
         const resp = await axios.get('/api/youtubeAPI.php');
