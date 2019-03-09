@@ -1,29 +1,49 @@
 import React from 'react';
 import Input from './input'
-import {Field, reduxForm} from 'redux-form'
+import { Field, reduxForm } from 'redux-form'
+// import { browserHistory } from 'react-router';
+import { connect } from 'react-redux'
+
 
 const CredentialForm = (props) => {
+    const { onSubmit, formInfoStored, handleSubmit, history } = props;
+    if (formInfoStored === true) {
+        // history.push('/home');
+        console.log('FORM INFO STORED!')
+    }
     return (
-        <form>
+
+        <form onSubmit={handleSubmit(onSubmit)}>
             <div className="row">
                 <div className="input-field col s6 offset-s3">
-                    <Field id='email' name="email" component={Input} type='text' label='Enter Your Email'/>
+                    <Field name="AppleCalendarInfo" component={Input} type='text' label='Enter Your Apple Calendar URL' />
                 </div>
             </div>
             <div className="row">
                 <div className="input-field col s6 offset-s3">
-                    <Field name="password" component={Input} type='text' label='Enter Your Password'/>
+                    <Field name="RedditInfo" component={Input} type='text' label='Enter Your SubReddit RSS Feed' />
+                </div>
+            </div>
+            <div className="row">
+                <div className="input-field col s6 offset-s3">
+                    <Field name="YoutubeInfo" component={Input} type='text' label='Enter Your Youtube Username' />
                 </div>
             </div>
             <div className="row">
                 <div className="col s12 right-align">
-                    <button className="btn purple">Sign In</button>
+                    <button className="btn purple">Load Dashboard</button>
                 </div>
             </div>
         </form>
     )
 }
 
-export default reduxForm({
+export default connect(mapStateToProps)(reduxForm({
     form: 'credential_form'
-})(CredentialForm);
+})(CredentialForm));
+
+function mapStateToProps(state) {
+    return {
+        formInfoStored: state.apiCall.formInfoStored
+    }
+}
