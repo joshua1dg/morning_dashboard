@@ -1,39 +1,20 @@
-import React, {Component} from 'react';
-import '../assets/css/app.css';
-import logo from '../assets/images/logo.svg';
-
-import axios from 'axios';
-import Test from './test';
-
-
-import './general/general.scss';
-import Header from './boardHeader/header'
-import Footer from './boardFooter/footer';
-import Center from './boardCenter/center';
-import Submit from './general/submit';
-
+import React, {Component, Fragment} from 'react';
 import {Route, Switch} from 'react-router-dom';
+import Dashboard from './dashboard';
+import Submit from '../components/general/submit';
 
 class App extends Component{
 
-    render () {
-            return (
-                <div className='dashBoard'>
-                        <Header/>
-                        <Switch>
-                            <Route path='/home' render={() => <Center section={'quote'}/>}/>
-                            <Route path='/social' render={() => <Center section={'social'} />} />
-                            <Route path='/news' render={() => <Center section={'news'}/>} />
-                        </Switch>
-                        <Submit/>
-                        {/* <Footer/> */}
-                </div>
-            )
-        }
+    render(){
+        return(
+            <Switch>
+                <Route to='/credentials' component={Submit}/>
+                <Route to='/home' component={Dashboard}/>
+            </Switch>
+        )
 
+    }
 
-
-    
 }
 
 export default App;
