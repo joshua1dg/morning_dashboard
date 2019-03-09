@@ -7,10 +7,11 @@ class App extends Component{
 
     render(){
         return(
-            <Switch>
-                <Route to='/credentials' component={Submit}/>
-                <Route to='/home' component={Dashboard}/>
-            </Switch>
+            <Dashboard/>
+            // <Switch>
+            //     <Route path='/credentials' component={Submit}/>
+            //     <Route path='/home' component={Dashboard}/>
+            // </Switch>
         )
 
     }
