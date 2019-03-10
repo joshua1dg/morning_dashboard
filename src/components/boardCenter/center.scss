@@ -1,5 +1,4 @@
 .center{
-    background-color: burlywood;
     height: 70%;
     width: 100%;
     display: flex;
@@ -7,7 +6,6 @@
     align-items: center;
 
     .leftPage, .rightPage{
-        background-color: blueviolet;
         width: 5%;
         height: 15%;
         font-size: 40px;
@@ -18,7 +16,6 @@
         padding: 3%;
         height: 35%;
         width: 85%;
-        background-color: beige;
         text-align: center;
 
         .quote{

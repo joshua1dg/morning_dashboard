@@ -23,7 +23,7 @@ class Dashboard extends Component{
                             <Route path='/news' render={() => <Center section={'news'}/>} />
                         </Switch>
                         {/* <Submit/> */}
-                        {/* <Footer/> */}
+                        <Footer/>
                 </div>
             )
         }
