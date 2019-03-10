@@ -32,6 +32,7 @@ class RssFeed extends Component{
     render(){
         return (
             <div className="feedContainer">
+                <img className='rssImage' src="dist/images/rssShape.png" alt="" />
                 {this.parseRssFeed(this.props.newsObj)}
             </div>
         );

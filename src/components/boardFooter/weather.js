@@ -24,10 +24,10 @@ class Weather extends Component{
 
         return(
             <div className="currentWeatherInfo">
-                <div>Feels Like</div>
-                <div>{currentTemp}</div>
-                <div>{description}</div>
-                <div>{icon}</div>
+                <div className='feelsLike'>Feels Like</div>
+                <div className='currentTemp'>{currentTemp}</div>
+                <div className='description'>{description}</div>
+                <div className='icon'>{icon}</div>
             </div>
         )
     }

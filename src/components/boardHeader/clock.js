@@ -15,7 +15,8 @@ class Clock extends Component{
     updateTime = () => {
         const dateObj = new Date();
         this.setState({
-            time: dateObj.toLocaleString('en-US', { hour: 'numeric', hour12: true, minute: 'numeric' }),
+            time: dateObj.toLocaleString('en-US', { hour: 'numeric', hour12: true, minute: 'numeric' })
+                    .replace(' PM', '').replace(' AM', ''),
             day: dateObj.toLocaleDateString('en-us', { weekday: 'long' }),
             date: dateObj.toLocaleDateString('en-us', { month: 'short', day: 'numeric' })
         })
@@ -31,7 +32,9 @@ class Clock extends Component{
     render(){
         return(
             <div className="currentTimeContainer">
-                <span>{this.state.time}<br />{this.state.day}<br />{this.state.date}</span>
+                <div className='time'>{this.state.time}</div>
+                <div className='day'>{this.state.day}</div>
+                <div className='date'>{this.state.date}</div>
             </div>
         )
 

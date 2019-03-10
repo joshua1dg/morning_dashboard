@@ -1,20 +1,27 @@
 .header{
-    height: 15%;
+    height: 17.5%;
     width: 100%;
-    background-color: green;
     display: flex;
     flex-wrap: wrap;
     
     .currentTimeContainer{
-        display: flex;
         box-sizing: border-box;
         height: 100%;
         width: 25%;
-        background-color: darkred;
-        padding: 1%;
+        padding: 2% 0 0 2%;
+        text-align: left;
+        line-height: 1.2;
 
-        span{
-            margin: auto;
+        .time{
+            font-size: 35px;
+        }
+
+        .day{
+            font-size: 22.5px;
+        }
+
+        .date{
+            font-size:  18px;
         }
     }
 
@@ -27,7 +34,6 @@
         .agendaToday{
         height: 100%;
         width: 100%;
-        background-color: crimson;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
@@ -39,7 +45,7 @@
                 width: 17.5%;
                 height: 100%;
                 margin: 0 1%;
-                border-top: solid black 1px;
+                border-top: solid white 1px;
                 text-align: center;
 
             }
