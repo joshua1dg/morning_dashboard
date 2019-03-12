@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import { sendUserCredentials } from '../../actions/index'
+import { sendUserCredentials } from '../../../actions/index'
 import CredentialForm from './credentialForm';
 import { Redirect } from 'react-router-dom';
 

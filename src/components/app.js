@@ -1,17 +1,22 @@
 import React, {Component, Fragment} from 'react';
 import {Route, Switch} from 'react-router-dom';
 import Dashboard from './dashboard';
-import Submit from '../components/general/submit';
+import Submit from '../components/general/forms/submit';
+import SignIn from '../components/general/forms/signIn'
 
 class App extends Component{
 
     render(){
         return(
-            <Dashboard/>
-            // <Switch>
-            //     <Route path='/credentials' component={Submit}/>
-            //     <Route path='/home' component={Dashboard}/>
-            // </Switch>
+            // <Fragment>
+            // <Dashboard/>
+            // <Submit/>
+            // </Fragment>
+            <Switch>
+                <Route path='/signin' component={SignIn}/>
+                <Route path='/credentials' component={Submit}/>
+                <Route path='/home' component={Dashboard}/>
+            </Switch>
         )
 
     }

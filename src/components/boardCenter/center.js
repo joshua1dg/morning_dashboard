@@ -13,7 +13,7 @@ class Home extends Component{
             case 'news': 
                 return (
                 <Fragment>
-                <Link to='/social' className="leftPage">{'<'}</Link>
+                <Link to='/home/social' className="leftPage">{'<'}</Link>
                     <RssFeed/>
                 <Link to='/home' className="rightPage">{'>'}</Link>
                 </Fragment>
@@ -23,15 +23,15 @@ class Home extends Component{
                 <Fragment>
                 <Link to='/home' className="leftPage">{'<'}</Link>
                     <Social />
-                    <Link to='/news' className="rightPage">{'>'}</Link>
+                        <Link to='/home/news' className="rightPage">{'>'}</Link>
                 </Fragment>
                 );
             case 'quote': 
                 return (
                 <Fragment>
-                <Link to='/news' className="leftPage">{'<'}</Link>
+                        <Link to='/home/news' className="leftPage">{'<'}</Link>
                     <Quote />
-                <Link to='/social' className="rightPage">{'>'}</Link>
+                        <Link to='/home/social' className="rightPage">{'>'}</Link>
                 </Fragment>                );
         }
     }

@@ -17,7 +17,7 @@ class Social extends Component{
         return (
             <div className='socialInfoContainer'>
                 <div className="totalSubscribersContainer">
-                    <img className='socialImage' src="dist/images/socialShape.png" alt="" />
+                    <img className='socialImage' src="/dist/images/socialShape.png" alt="" />
                     <div className="subscriberText">
                         <div>Total Subscribers</div>
                         <div>{youtubeInfo}</div>

@@ -1,6 +1,7 @@
 import types from '../actions/types'
 
 const DEFAULT_STATE = {
+    signedIn: false,
     formInfoStored: false,
     longitude: null,
     latitude: null,
@@ -26,6 +27,8 @@ export default (state = DEFAULT_STATE, action) => {
             return { ...state, ...action.payload }
         case types.SEND_USER_INFO:
             return { ...state, ...action.payload }
+        case types.SEND_USER_AUTH:
+            return {...state, ...action.payload}
         default:
             return state;
     }

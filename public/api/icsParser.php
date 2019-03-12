@@ -1,6 +1,6 @@
 <?php
 require_once ( '../icsParser/iCalEasyReader.php' );
-require_once('./credentials.php');
+require_once('../../credentials/credentials.php');
 header( 'Content-Type: text/plain; charset=UTF-8' );
 
 function getEvents($icsFileUrl){

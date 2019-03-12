@@ -16,6 +16,11 @@ const CredentialForm = (props) => {
         <form onSubmit={handleSubmit(onSubmit)}>
             <div className="row">
                 <div className="input-field col s6 offset-s3">
+                    <Field name="username" component={Input} type='text' label='Enter a Username To Be Identified As' />
+                </div>
+            </div>
+            <div className="row">
+                <div className="input-field col s6 offset-s3">
                     <Field name="AppleCalendarInfo" component={Input} type='text' label='Enter Your Apple Calendar URL' />
                 </div>
             </div>

@@ -1,5 +1,5 @@
 <?php
-require_once('./credentials.php');
+require_once('../../credentials/credentials.php');
 
 
 // if(!isset(FROM_INSIDE)){
@@ -86,10 +86,15 @@ function getLocationKey($weatherApiKey){
 
 //____________________________________________________________
 
-$locationKey = getLocationKey($weatherApiKey);
+
+//___________________-_______________UNCOMMENT WHEN LIVE
+// $locationKey = getLocationKey($weatherApiKey);
 
 //Weather API
-$weatherForecast = getHourlyForecast($weatherApiKey, $locationKey);
+//______________________________________UNCOMMENT WHEN LIVE
+// $weatherForecast = getHourlyForecast($weatherApiKey, $locationKey);
+$weatherForecast = getHourlyForecast();
+
 // print_r($weatherForecast);
 
 

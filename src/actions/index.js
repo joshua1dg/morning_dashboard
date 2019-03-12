@@ -4,7 +4,7 @@ import types from './types';
 export function sendUserCredentials(formValues) {
     console.log('formvalues in sendcred action: ', formValues);
     return async function (dispatch) {
-        const resp = await axios.post('/api/credentials.php', formValues);
+        const resp = await axios.post('/api/sendCred.php', formValues);
         console.log('this is cred resp: ', resp);
         dispatch({
             type: types.SEND_USER_INFO,
@@ -13,6 +13,13 @@ export function sendUserCredentials(formValues) {
             }
         })
         return resp.data;
+    }
+}
+
+
+export function sendUserAuth(formValues){
+    return async function (dispatch){
+        const resp = await axios.post('/api/sendAuth.php', formValues)
     }
 }
 
@@ -33,6 +40,7 @@ export function getYoutubeInfo(){
 export function getRssData() {
     return async function (dispatch){
         const resp = await axios.get('/api/rssParser.php');
+        console.log('this is resp: ', resp);
         // const finalResp = this.parseRssFeed(resp.data.data['Reddit']);
         dispatch({
             type: types.GET_RSS,
@@ -43,6 +51,7 @@ export function getRssData() {
     }
 
 }
+
 
 export function getQuote(){
     return async function (dispatch){

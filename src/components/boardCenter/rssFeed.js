@@ -1,9 +1,14 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {getRssData} from '../../actions/index'
+import Modal from '../general/modal'
 import axios from 'axios';
 
 class RssFeed extends Component{
+    state = {
+        modalVisible: false,
+        modalContentUrl: ''
+    }
 
     parseRssFeed(feedToParse){
         const resultElements = [];
@@ -11,10 +16,14 @@ class RssFeed extends Component{
             for (let indivPost = 0; indivPost < subfeedPosts.length; indivPost++){
                 const htmlParser = new DOMParser();
                 const htmlContent = htmlParser.parseFromString(subfeedPosts[indivPost]['postContent'], "text/html");
+                var postLink = htmlContent.getElementsByTagName('span')[0].innerHTML;
+                console.log('post link: ', postLink)
                 var parsedContent = htmlContent.getElementsByClassName("md")[0].innerHTML;
 
                 const indivPostElements = 
-                    <div className="indivPostContainer" key={indivPost}>
+                    <div className="indivPostContainer" key={indivPost} onClick={
+                        ()=>{this.setState({modalVisible: true, modalContentUrl: postLink}); console.log('clicked!')}
+                        }>
                         <h5 className="postTitle">{subfeedPosts[indivPost]['postTitle']}</h5>
                         <div className="postContent" dangerouslySetInnerHTML={{ __html: parsedContent}} />
                     </div>
@@ -30,9 +39,17 @@ class RssFeed extends Component{
     }
 
     render(){
+        const {modalContentUrl} = this.state;
+
+        if(this.state.modalVisible){
+            return(
+                <Modal modalContent={modalContentUrl}/>
+            )
+        }
+
         return (
             <div className="feedContainer">
-                <img className='rssImage' src="dist/images/rssShape.png" alt="" />
+                <img className='rssImage' src="/dist/images/rssShape.png" alt="" />
                 {this.parseRssFeed(this.props.newsObj)}
             </div>
         );

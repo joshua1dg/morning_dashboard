@@ -3,9 +3,36 @@ body{
     background-size: cover;
     background-position: center;
     color: white;
-
+    height: 100vh;
+    width: 100vw;
     font-family: 'Roboto', sans-serif;
 
+}
+
+.modal{
+    position: absolute;
+    // display: none;
+    height: 75%;
+    width: 75%;
+    background-color: blue;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#root{
+    height: 100%;
+    width: 100%;
+
+    .container{
+        h3{
+            margin: 0;
+        }
+
+        .input-field>label{
+            color: white;
+        }
+    }
 }
 
 .overlay{
@@ -17,7 +44,7 @@ body{
 }
 
 .dashBoard{
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     margin: 0;
 }

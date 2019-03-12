@@ -1,5 +1,5 @@
 <?php
-require_once('credentials.php');
+require_once('../../credentials/credentials.php');
 
 function getSubscriptionCount($user_name, $api_key){
     $api_response = file_get_contents("https://www.googleapis.com/youtube/v3/channels?part=statistics&forUsername=$user_name&fields=items/statistics/subscriberCount&key=$api_key");
