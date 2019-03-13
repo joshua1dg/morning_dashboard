@@ -9,7 +9,7 @@ class Submit extends Component {
     handleSubmit = async values => {
         console.log('Form Values', values);
 
-        const resp = await this.props.sendUserCredentials(values);
+        const resp = await this.props.sendUserCredentials(values, this.props.userId);
         if (!resp.success) {
             console.log('server did not give response!');
             return;
@@ -46,6 +46,7 @@ export default connect(mapStateToProps, { sendUserCredentials })(Submit);
 
 function mapStateToProps(state) {
     return {
-        formInfoStored: state.apiCall.formInfoStored
+        formInfoStored: state.apiCall.formInfoStored,
+        userId: state.apiCall.userId
     }
 }

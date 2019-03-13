@@ -12,13 +12,15 @@ class SignIn extends Component{
         console.log('Form Values', values);
 
         const resp = await this.props.sendUserAuth(values);
+        console.log('this is response!: ', resp);
+
         if (!resp.success) {
             console.log('server did not give response!');
             return;
         }
-        console.log('resp after await: ', resp);
+        console.log('userID after await: ', this.props.userId);
 
-        // this.props.history.push('/home');
+        this.props.history.push('/credentials');
     }
 
     render(){
@@ -60,6 +62,7 @@ export default connect(mapStateToProps, {sendUserAuth})(reduxForm({
 
 function mapStateToProps(state) {
     return {
-        signedIn: state.apiCall.signedIn
+        signedIn: state.apiCall.signedIn,
+        userId: state.apiCall.userId
     }
 }

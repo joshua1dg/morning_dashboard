@@ -1,10 +1,10 @@
 import axios from 'axios';
 import types from './types';
 
-export function sendUserCredentials(formValues) {
+export function sendUserCredentials(formValues, userId) {
     console.log('formvalues in sendcred action: ', formValues);
     return async function (dispatch) {
-        const resp = await axios.post('/api/sendCred.php', formValues);
+        const resp = await axios.post('/api/sendCred.php', {...formValues, userId});
         console.log('this is cred resp: ', resp);
         dispatch({
             type: types.SEND_USER_INFO,
@@ -19,7 +19,16 @@ export function sendUserCredentials(formValues) {
 
 export function sendUserAuth(formValues){
     return async function (dispatch){
-        const resp = await axios.post('/api/sendAuth.php', formValues)
+        const resp = await axios.post('/api/sendAuth.php', formValues);
+        console.log('this is resp in index: ', resp);
+        dispatch({
+            type: types.SEND_USER_AUTH,
+            payload: {
+                signedIn: true,
+                userId: resp.data.data
+            }
+        })
+        return resp.data;
     }
 }
 
