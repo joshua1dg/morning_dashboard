@@ -9,7 +9,7 @@ class Submit extends Component {
     handleSubmit = async values => {
         console.log('Form Values', values);
 
-        const resp = await this.props.sendUserCredentials(values, this.props.userId);
+        const resp = await this.props.sendUserCredentials(values);
         if (!resp.success) {
             console.log('server did not give response!');
             return;

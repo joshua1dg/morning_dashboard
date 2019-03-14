@@ -1,7 +1,6 @@
 import types from '../actions/types'
 
 const DEFAULT_STATE = {
-    userId: null,
     signedIn: false,
     formInfoStored: false,
     longitude: null,

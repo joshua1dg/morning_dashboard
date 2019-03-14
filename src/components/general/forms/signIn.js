@@ -18,7 +18,6 @@ class SignIn extends Component{
             console.log('server did not give response!');
             return;
         }
-        console.log('userID after await: ', this.props.userId);
 
         this.props.history.push('/credentials');
     }
@@ -63,6 +62,5 @@ export default connect(mapStateToProps, {sendUserAuth})(reduxForm({
 function mapStateToProps(state) {
     return {
         signedIn: state.apiCall.signedIn,
-        userId: state.apiCall.userId
     }
 }

@@ -1,10 +1,10 @@
 import axios from 'axios';
 import types from './types';
 
-export function sendUserCredentials(formValues, userId) {
+export function sendUserCredentials(formValues) {
     console.log('formvalues in sendcred action: ', formValues);
     return async function (dispatch) {
-        const resp = await axios.post('/api/sendCred.php', {...formValues, userId});
+        const resp = await axios.post('/api/sendCred.php', {...formValues});
         console.log('this is cred resp: ', resp);
         dispatch({
             type: types.SEND_USER_INFO,
@@ -25,7 +25,6 @@ export function sendUserAuth(formValues){
             type: types.SEND_USER_AUTH,
             payload: {
                 signedIn: true,
-                userId: resp.data.data
             }
         })
         return resp.data;
@@ -48,7 +47,7 @@ export function getYoutubeInfo(){
 
 export function getRssData() {
     return async function (dispatch){
-        const resp = await axios.get('/api/rssParser.php');
+        const resp = await axios.get('/api/redditJson.php');
         console.log('this is resp: ', resp);
         // const finalResp = this.parseRssFeed(resp.data.data['Reddit']);
         dispatch({

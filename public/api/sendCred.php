@@ -1,6 +1,8 @@
 <?php
 require_once('dbConnection.php');
 
+session_start();
+
 $postData = json_decode(file_get_contents('php://input'), true);
 
 
@@ -8,7 +10,9 @@ $calendarUrl = $postData['AppleCalendarInfo'];
 $username = $postData['username'];
 $redditInfo = $postData['RedditInfo'];
 $youtubeInfo = $postData['YoutubeInfo'];
-$user_id = $postData['userId'];
+$user_id = $_SESSION['user_id'];
+
+echo $user_id;
 
 // echo $calendarUrl;
 // echo $username;
@@ -38,7 +42,7 @@ INSERT INTO youtubeInfo(user_id, username) VALUES('$user_id', '$youtubeInfo');
 $result = $connection->multi_query($queryPopulateInfo);
 
 if($user_id){
-    print(json_encode(['success' => 'true', 'data'=> $user_id]));
+    print(json_encode(['success' => 'true', 'data'=> 'Sent and Utilized Data Successfully!']));
 } else {
     echo 'No result from DB';
 }
