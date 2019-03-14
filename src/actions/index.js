@@ -82,6 +82,8 @@ export function getAgendaObj(){
         const resp = await axios.get('/api/icsParser.php');
         const newObj = {agendaObj: resp.data.data};
 
+        console.log('this is agendaObj obj in actions: ', newObj)
+
         dispatch({
             type: types.GET_AGENDA,
             payload: newObj

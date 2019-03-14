@@ -1,11 +1,12 @@
 import React from 'react';
 
 export default (props) => {
-    const { label, input } = props
+    const { label, input, type} = props;
+    const {name} = props.input
     return (
         <div className="input-field">
-            <input id={props.input.name} type='text' {...input}></input>
-            <label htmlFor={props.input.name}>{label}</label>
+            <input id={name} type={type} className='validate' {...input}></input>
+            <label htmlFor={name}>{label}</label>
         </div>
     )
 }

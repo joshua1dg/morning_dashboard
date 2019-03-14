@@ -1,7 +1,14 @@
 <?php
 require_once ( '../icsParser/iCalEasyReader.php' );
 require_once('../../credentials/credentials.php');
+require_once('dbConnection.php');
 header( 'Content-Type: text/plain; charset=UTF-8' );
+
+session_start();
+
+$user_id = $_SESSION['user_id'];
+$query = "SELECT calendar_url, calendar_name FROM `agendas` WHERE user_id=$user_id";
+$getAgendaUrl = mysqli_fetch_assoc($connection->query($query))['calendar_url'];
 
 function getEvents($icsFileUrl){
     $ical = new iCalEasyReader();
@@ -59,7 +66,7 @@ function trackRecurrence($parsedIcsArray){
 }
 
 //Calendar Info
-$calendarInfo = getEvents($icalUrl);
+$calendarInfo = getEvents($getAgendaUrl);
 // print_r($calendarInfo);
 
 function calendarEventPreperation($calendarInfo){

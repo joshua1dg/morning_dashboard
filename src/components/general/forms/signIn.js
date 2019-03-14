@@ -42,7 +42,7 @@ class SignIn extends Component{
                 </div>
                 <div className="row">
                     <div className="input-field col s6 offset-s3">
-                        <Field name="password" component={Input} type='text' label='Enter Your Password' />
+                        <Field name="password" component={Input} type='password' label='Enter Your Password' />
                     </div>
                 </div>
                 <div className="row">

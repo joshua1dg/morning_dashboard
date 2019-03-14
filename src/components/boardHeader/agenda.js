@@ -11,6 +11,7 @@ class Agenda extends Component{
     }
     
     render(){
+        console.log('this is agenda props: ', this.props);
         const {agendaObj} = this.props;
         if (Object.keys(agendaObj).length !==0){
             return (
