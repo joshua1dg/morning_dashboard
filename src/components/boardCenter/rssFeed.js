@@ -25,7 +25,7 @@ class RssFeed extends Component{
 
                 const indivPostElements = 
                     <div className="indivPostContainer modal-trigger" href="#modal1" key={indivPost} onClick={
-                        ()=>{this.setState({modalVisible: true, modalContentUrl: postLink}); console.log('clicked!')}
+                        ()=>{this.setState({modalVisible: true}); console.log('clicked!')}
                             }>
                         <h5 className="postTitle">{subfeedPosts[indivPost]['postTitle']}</h5>
                         <div className="postContent" dangerouslySetInnerHTML={{ __html: parsedContent}} />

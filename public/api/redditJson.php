@@ -1,5 +1,14 @@
 <?php
 require_once('../../credentials/credentials.php');
+require_once('dbConnection.php');
+session_start();
+
+$user_id = $_SESSION['user_id'];
+
+$query = "SELECT feed_url, feed_name FROM `rssFeeds` WHERE user_id = $user_id";
+
+$getUrl = mysqli_fetch_assoc($connection->query($query))['feed_url'] . '.json';
+
 
 function parseUrl($urlToParse){
 
@@ -22,7 +31,7 @@ function parseUrl($urlToParse){
 
 }
 
-$responseToClient = parseUrl('https://www.reddit.com/r/entrepreneur/.json');
+$responseToClient = parseUrl($getUrl);
 
 print(json_encode([
     'success' => true,
