@@ -27,7 +27,7 @@ class Weather extends Component{
                 <div className='feelsLike'>Feels Like</div>
                 <div className='currentTemp'>{currentTemp}</div>
                 <div className='description'>{description}</div>
-                <div className='icon'>{icon}</div>
+                <div className='icon'><img src={`/dist/images/weatherIcons/icon${icon}.png`} /></div>
             </div>
         )
     }
@@ -45,7 +45,7 @@ class Weather extends Component{
                         <div>{hour}</div>
                         <div>{lowestTemp}</div>
                         <div>{description}</div>
-                        <div>{icon}</div>
+                        <div><img src={`/dist/images/weatherIcons/icon${icon}.png`}/></div>
                     </div>
                 )
             }
