@@ -6,8 +6,9 @@ require_once('../../credentials/credentials.php');
 //     die('cannot be run directly');
 // }
 
-function getHourlyForecast(){
-    $response = json_decode(file_get_contents('./hourlyForecastDummy'));
+function getHourlyForecast($apiKey, $locationKey){
+    // $response = json_decode(file_get_contents('./hourlyForecastDummy'));
+    $response = json_decode(file_get_contents("http://dataservice.accuweather.com//forecasts/v1/hourly/12hour/$locationKey?apikey=$apiKey"));
 
     $hourForecastArray = [];
 
@@ -88,12 +89,12 @@ function getLocationKey($weatherApiKey){
 
 
 //___________________-_______________UNCOMMENT WHEN LIVE
-// $locationKey = getLocationKey($weatherApiKey);
+$locationKey = getLocationKey($weatherApiKey);
 
 //Weather API
 //______________________________________UNCOMMENT WHEN LIVE
-// $weatherForecast = getHourlyForecast($weatherApiKey, $locationKey);
-$weatherForecast = getHourlyForecast();
+$weatherForecast = getHourlyForecast($weatherApiKey, $locationKey);
+// $weatherForecast = getHourlyForecast();
 
 // print_r($weatherForecast);
 
