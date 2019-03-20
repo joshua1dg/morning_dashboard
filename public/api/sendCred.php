@@ -7,12 +7,9 @@ $postData = json_decode(file_get_contents('php://input'), true);
 
 
 $calendarUrl = $postData['AppleCalendarInfo'];
-$username = $postData['username'];
 $redditInfo = $postData['RedditInfo'];
 $youtubeInfo = $postData['YoutubeInfo'];
 $user_id = $_SESSION['user_id'];
-
-echo $user_id;
 
 // echo $calendarUrl;
 // echo $username;
