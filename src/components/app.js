@@ -14,7 +14,7 @@ class App extends Component{
             // <Submit/>
             // </Fragment>
             <Switch>
-                <Route exact path='/' render={()=>(<Redirect to='/credentials'/>)} />
+                <Route exact path='/' component={LandingPage} />
                 <Route path='/signin' component={SignIn}/>
                 <Route path='/credentials' component={Submit}/>
                 <Route path='/home' component={Dashboard}/>
