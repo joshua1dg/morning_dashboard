@@ -2,7 +2,7 @@
 
 $servername = 'localhost';
 $username = 'root';
-$password = 'root';
+$password = 'Joshalex2!';
 $database = 'productivity_dashboard';
 
 
