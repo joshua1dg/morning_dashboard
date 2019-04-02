@@ -17,9 +17,12 @@ class SignIn extends Component{
         if (!resp.success) {
             console.log('server did not give response!');
             return;
+        } else if(resp.newAccount){
+            this.props.history.push('/credentials');
+        } else{
+            this.props.history.push('/home');
         }
 
-        this.props.history.push('/credentials');
     }
 
     render(){
