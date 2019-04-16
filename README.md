@@ -10,6 +10,7 @@ React
 PHP
 Materialize
 
+## Features
 
 ### Features Currently Include:
 Current Weather
