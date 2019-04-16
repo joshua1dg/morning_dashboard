@@ -1,29 +1,32 @@
-<img align="right" width="150" src="https://github.com/Learning-Fuze/react-with-server/blob/master/public/dist/php-react.png">
+# Morning Productivity Dashboard
 
-# PHP React Starter
+A productivity dashboard meant to help free up time away from your phone and achieve a distraction free, effective morning.
 
-> This repo contains boilerplate code to aid in the creation of a new React app with Redux and PHP back end. Follow the below setup instructions to get started.
+##Stack:
+JavaScript
+HTML
+Sass/CSS
+React
+PHP
+Materialize
 
-### Setup Instructions
 
-> 1. Fork this repo
-> 1. Clone your forked copy of this repo
->    - `git clone https://github.com/[Your Username]/lampr-demo.git`
-> 1. Change directory into the newly cloned repo
->    - `cd lampr-demo`
-> 1. Install dependencies 
->    - `npm install`
-> 1. Use MAMP or similar program to start Apache and MySQL servers
->    - Set root directory of server to the `public` folder of this project
->    - Set Apache port to `8000`
->    - Use phpMyAdmin (or similar) to create a database
-> 1. Start dev server
->    - `npm start`
-> 1. Open a browser and navigate to `localhost:3000` You should see "Welcome to React".
+###Features Currently Include:
+Current Weather
+Tri-Hourly Weather Forecast
+Quote of The Day
+ICal (Apple and Google Calendar) Integration - view your schedule
+Youtube Subcribers
+Most Recent Posts for Two SubReddits
 
-### Bundle For Deployment
+###Future Features
+Instagram Follower Count
+Twitter Follower Count
+Expandable Subreddit Comment Section
+Multiple Calendar Integration
+Google News Integration
+Email Integration
+Viewable Youtube Comments
 
-> 1. Run webpack to bundle files
->    - `npm run bundle`
-> 
-> **NOTE:** *After bundling and placing on a web server. The `public` folder should be the web root*
+
+
