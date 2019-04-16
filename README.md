@@ -2,7 +2,7 @@
 
 A productivity dashboard meant to help free up time away from your phone and achieve a distraction free, effective morning.
 
-##Stack:
+## Stack:
 JavaScript
 HTML
 Sass/CSS
@@ -11,7 +11,7 @@ PHP
 Materialize
 
 
-###Features Currently Include:
+### Features Currently Include:
 Current Weather
 Tri-Hourly Weather Forecast
 Quote of The Day
@@ -19,7 +19,7 @@ ICal (Apple and Google Calendar) Integration - view your schedule
 Youtube Subcribers
 Most Recent Posts for Two SubReddits
 
-###Future Features
+### Future Features
 Instagram Follower Count
 Twitter Follower Count
 Expandable Subreddit Comment Section
